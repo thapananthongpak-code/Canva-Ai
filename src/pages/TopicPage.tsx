@@ -15,7 +15,6 @@ import { Blobs } from '../components/Blobs'
 import { GradeSwitch } from '../components/GradeSwitch'
 import { TopicIcon } from '../components/TopicIcon'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
-import { TopicGallery } from '../components/TopicGallery'
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -24,7 +23,6 @@ import {
   ChevronRightIcon,
   ExternalLinkIcon,
   ListIcon,
-  SparkIcon,
   WorkshopIcon,
 } from '../components/Icons'
 import { NotFoundPage } from './NotFoundPage'
@@ -32,17 +30,7 @@ import { NotFoundPage } from './NotFoundPage'
 const sections = [
   { id: 'key-points', label: 'ประเด็นสำคัญ' },
   { id: 'workshop', label: 'กิจกรรมในคาบ' },
-  { id: 'gallery', label: 'รูปประกอบ' },
-  { id: 'tips', label: 'เคล็ดลับจากพี่ผู้สอน' },
   { id: 'slides', label: 'สไลด์ Canva' },
-]
-
-/** องศาเอียงคงที่ของกระดาษโน้ตแต่ละใบ — เอียงแล้วอยู่นิ่ง ไม่ขยับเอง */
-const noteTilt = ['-rotate-1', 'rotate-1', '-rotate-2', 'rotate-2']
-const noteTone = [
-  'bg-mint-100/70 border-mint-200',
-  'bg-aqua-100/70 border-aqua-200',
-  'bg-grape-50 border-grape-200',
 ]
 
 export function TopicPage() {
@@ -66,7 +54,7 @@ export function TopicPage() {
 
   return (
     <>
-      {/* ══════════════ หัวหน้า ══════════════ */}
+      {/* ══════════════ ส่วนหัวของหน้า ══════════════ */}
       <section className="relative overflow-hidden pb-4 pt-8">
         <Blobs
           blobs={[
@@ -76,7 +64,7 @@ export function TopicPage() {
         />
         <div className="container-page">
           {/* Breadcrumb */}
-          <nav aria-label="เส้นทางหน้า">
+          <nav aria-label="เส้นทางการนำทาง">
             <ol className="flex flex-wrap items-center gap-1.5 text-sm text-ink-400">
               <li>
                 <Link to="/" className="focus-ring rounded transition-colors hover:text-grape-600">
@@ -139,7 +127,16 @@ export function TopicPage() {
       </section>
 
       {/* ══════════════ เนื้อหา + สารบัญลอย ══════════════ */}
-      <div className="container-page mt-14 grid gap-10 lg:grid-cols-[210px_minmax(0,1fr)] lg:gap-12">
+      <div className="relative overflow-hidden pb-4 pt-14">
+        <Blobs
+          blobs={[
+            { tone: 'mint', position: 'top-[4%] right-[-3rem] h-52 w-52 sm:h-64 sm:w-64' },
+            { tone: 'grape', position: 'top-[30%] left-[-2rem] h-56 w-56 sm:h-72 sm:w-72' },
+            { tone: 'aqua', position: 'top-[58%] right-[-2rem] h-48 w-48 sm:h-64 sm:w-64' },
+            { tone: 'grape', position: 'bottom-[4%] left-[4%] h-48 w-48 sm:h-60 sm:w-60' },
+          ]}
+        />
+        <div className="container-page grid gap-10 lg:grid-cols-[210px_minmax(0,1fr)] lg:gap-12">
         {/* สารบัญ */}
         <aside className="min-w-0 lg:sticky lg:top-28 lg:self-start">
           <div className="rounded-3xl border border-grape-100 bg-white/80 p-4 shadow-soft">
@@ -198,7 +195,7 @@ export function TopicPage() {
             <Reveal>
               <h2 className="text-2xl font-bold text-ink-800 sm:text-3xl">ประเด็นสำคัญ</h2>
               <p className="mt-2 text-sm text-ink-400">
-                สรุปสิ่งที่เรียนไปในหัวข้อนี้ เวอร์ชัน {GRADE_LABEL[grade]}
+                สิ่งที่เรียนไปในหัวข้อนี้ เวอร์ชัน {GRADE_LABEL[grade]}
               </p>
             </Reveal>
 
@@ -235,48 +232,6 @@ export function TopicPage() {
             </Reveal>
           </section>
 
-          {/* ── รูปประกอบ (ดึงอัตโนมัติจากโฟลเดอร์รูปของหัวข้อนี้) ── */}
-          <section id="gallery" className="scroll-mt-28">
-            <Reveal>
-              <h2 className="text-2xl font-bold text-ink-800 sm:text-3xl">รูปประกอบ</h2>
-              <p className="mt-2 text-sm text-ink-400">
-                รูปจากคาบเรียนและตัวอย่างผลงานของหัวข้อนี้ กดที่รูปเพื่อดูขนาดเต็ม
-              </p>
-            </Reveal>
-
-            <TopicGallery folder={content.imageFolder} />
-          </section>
-
-          {/* ── เคล็ดลับ ────────────────────────────────────── */}
-          <section id="tips" className="scroll-mt-28">
-            <Reveal>
-              <h2 className="flex items-center gap-2 text-2xl font-bold text-ink-800 sm:text-3xl">
-                <SparkIcon className="h-6 w-6 text-mint-500" />
-                เคล็ดลับจากพี่ผู้สอน
-              </h2>
-              <p className="mt-2 text-sm text-ink-400">
-                {instructor ? `บันทึกสั้น ๆ จาก ${instructor.name}` : 'บันทึกสั้น ๆ จากพี่ผู้สอนหัวข้อนี้'}
-              </p>
-            </Reveal>
-
-            <RevealGroup className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {content.tips.map((tip, tipIndex) => (
-                <RevealItem key={tipIndex} className="h-full">
-                  <div
-                    className={`h-full rounded-2xl border p-5 shadow-note transition-transform duration-300 hover:rotate-0 hover:scale-[1.02] ${
-                      noteTone[tipIndex % noteTone.length]
-                    } ${noteTilt[tipIndex % noteTilt.length]}`}
-                  >
-                    <span className="text-xs font-bold uppercase tracking-wider text-ink-400">
-                      เคล็ดลับ {tipIndex + 1}
-                    </span>
-                    <p className="mt-2 text-[15px] leading-relaxed text-ink-700">{tip}</p>
-                  </div>
-                </RevealItem>
-              ))}
-            </RevealGroup>
-          </section>
-
           {/* ── สไลด์ Canva ─────────────────────────────────── */}
           <section id="slides" className="scroll-mt-28">
             <Reveal>
@@ -300,7 +255,7 @@ export function TopicPage() {
                 </div>
                 <div className="flex flex-wrap items-center justify-between gap-3 border-t border-grape-100 p-4">
                   <p className="text-xs text-ink-400">
-                    บาง Canva ตั้งค่าไม่ให้ฝังในเว็บอื่น ถ้าเห็นเป็นพื้นที่ว่างให้เปิดในแท็บใหม่แทน
+                    สไลด์ Canva บางชุดตั้งค่าไม่ให้ฝังในเว็บอื่น ถ้าเห็นเป็นพื้นที่ว่างให้เปิดในแท็บใหม่แทน
                   </p>
                   <a
                     href={slides.view}
@@ -349,6 +304,7 @@ export function TopicPage() {
             )}
           </nav>
         </main>
+        </div>
       </div>
     </>
   )

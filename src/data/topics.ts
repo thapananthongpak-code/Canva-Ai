@@ -3,9 +3,6 @@
  * ────────────────────────────────────────────────────────────────
  * ม.3 และ ม.6 เรียน "หัวข้อชื่อเดียวกันทั้ง 4 หัวข้อ" แต่เนื้อหาจริงคนละชุดกัน
  * จึงแยกเนื้อหาไว้ใน contentByGrade.m3 และ contentByGrade.m6
- *
- * รูปประกอบไม่ต้องระบุทีละไฟล์ — แค่วางไฟล์รูปลงในโฟลเดอร์ตาม imageFolder
- * เว็บจะดึงรูปทั้งหมดในโฟลเดอร์นั้นมาทำเป็นแกลเลอรีให้เอง (ดู src/lib/topicImages.ts)
  */
 
 export type Grade = 'm3' | 'm6'
@@ -32,13 +29,6 @@ export interface TopicContent {
   content: string[]
   /** กิจกรรม/เวิร์กช็อปที่ทำในคาบ */
   workshop: string
-  /** เคล็ดลับจากพี่ผู้สอน */
-  tips: string[]
-  /**
-   * โฟลเดอร์รูปประกอบของเนื้อหาชุดนี้ นับจาก src/assets/images/
-   * วางไฟล์รูปลงในโฟลเดอร์นี้ได้เลย ไม่ต้องมาแก้โค้ด
-   */
-  imageFolder: string
   /** ลิงก์สไลด์ Canva ของเนื้อหาชุดนี้ */
   canvaEmbedUrl: string
   /** อ้างอิงไปยังพี่ผู้สอนใน instructors.ts */
@@ -113,8 +103,6 @@ export const topics: Topic[] = [
         ],
         workshop:
           'สร้างพรีเซนต์แนะนำตัวเองอย่างง่าย โดยวางแผน 4 ข้อก่อนออกแบบ — ทำเรื่องอะไร / นำเสนอให้ใคร / สไตล์แบบไหน / โทน-ข้อจำกัดแบบไหน',
-        tips: ['เลือกใช้เทมเพลตสำเร็จรูปเป็นจุดเริ่มต้น ช่วยคุมสไตล์ให้สวยและประหยัดเวลา'],
-        imageFolder: 'm3/topic1-canva-basics',
         canvaEmbedUrl: CANVA_DECK_URL.m3,
         instructorId: 'm3-topic1',
       },
@@ -126,8 +114,6 @@ export const topics: Topic[] = [
           'เรียนรู้ Animation กำหนดการเคลื่อนไหวให้องค์ประกอบ (ข้อความ, รูปภาพ, ไอคอน, รูปทรง) เพื่อกระตุ้นความน่าสนใจ',
         ],
         workshop: 'ปรับปรุงสไลด์เดิมให้มีคุณภาพขึ้นและใส่ Animation ประกอบ',
-        tips: ['เน้นปฏิบัติตามแนวทางจัดวางโครงร่างมากกว่าทฤษฎีปุ่มควบคุมพื้นฐาน'],
-        imageFolder: 'm6/topic1-canva-basics',
         canvaEmbedUrl: CANVA_DECK_URL.m6,
         instructorId: 'm6-topic1',
       },
@@ -154,10 +140,6 @@ export const topics: Topic[] = [
           'Magic Layers — ลบพื้นหลัง จัดระดับชั้นภาพ ตัดต่อองค์ประกอบ',
         ],
         workshop: 'ทดลองใช้เครื่องมือ AI ทั้ง 3 แบบเพื่อพัฒนาสไลด์ของตัวเอง',
-        tips: [
-          'เลือกเครื่องมือ AI ให้ตรงจุดประสงค์ เช่น ต้องการเขียนข้อความใช้ Magic Write ต้องการรูปเฉพาะตัวใช้ Magic Media',
-        ],
-        imageFolder: 'm3/topic2-ai-in-canva',
         canvaEmbedUrl: CANVA_DECK_URL.m3,
         instructorId: 'm3-topic2',
       },
@@ -170,10 +152,6 @@ export const topics: Topic[] = [
           'คำสั่งย่อยของ Magic Write: ขยายความ (Expand), ทำให้กระชับ (Shorten), ปรับโทนภาษา (Change tone)',
         ],
         workshop: 'ฝึกใช้คำสั่งย่อยของ Magic Write ปรับแก้ข้อความในสไลด์จริง',
-        tips: [
-          'Magic Write ช่วยแนะนำเลย์เอาต์ ฟอนต์ โทนสีที่เหมาะสม ทำให้งานดูมืออาชีพแม้ไม่มีพื้นฐานดีไซน์',
-        ],
-        imageFolder: 'm6/topic2-ai-in-canva',
         canvaEmbedUrl: CANVA_DECK_URL.m6,
         instructorId: 'm6-topic2',
       },
@@ -200,8 +178,6 @@ export const topics: Topic[] = [
         ],
         workshop:
           'ฝึกเขียน Prompt เทียบตัวอย่าง “สั่งสั้น” เช่น “เขียนวิธีการประหยัดไฟ” กับ “สั่งละเอียด” เช่น “ช่วยเขียนวิธีการประหยัดไฟในห้องเรียน สำหรับนักเรียนชั้น ม.3 ใช้ข้อความสั้น ๆ”',
-        tips: ['หลีกเลี่ยงคำสั่งสั้นและกว้างเกินไป ระบุเป้าหมายและความยาวที่ต้องการลงใน Prompt ด้วย'],
-        imageFolder: 'm3/topic3-prompt-chatgpt-presentation',
         canvaEmbedUrl: CANVA_DECK_URL.m3,
         instructorId: 'm3-topic3',
       },
@@ -214,10 +190,6 @@ export const topics: Topic[] = [
           'สูตร Prompt คุณภาพสูง RTCF: Role (บทบาทของ AI), Task (งานที่สั่งให้ทำ), Context (บริบท/ข้อมูลแวดล้อม), Format (รูปแบบผลลัพธ์ที่ต้องการ)',
         ],
         workshop: 'เขียน Prompt แนะนำตัวเองแบบครบสูตร RTCF',
-        tips: [
-          'ใช้ ChatGPT ช่วยวางโครงร่าง (Outline) ร่างเนื้อหาหลัก และขัดเกลาภาษาสำหรับพรีเซนเทชัน',
-        ],
-        imageFolder: 'm6/topic3-prompt-chatgpt-presentation',
         canvaEmbedUrl: CANVA_DECK_URL.m6,
         instructorId: 'm6-topic3',
       },
@@ -243,8 +215,6 @@ export const topics: Topic[] = [
         ],
         workshop:
           'Activity 4 — CHATGPT AI PROMPT: การเขียน Prompt ด้วย ChatGPT เพื่อสร้าง Portfolio',
-        tips: ['ให้ศึกษาเพิ่มเติมจากเนื้อหาเวอร์ชัน ม.6 ซึ่งครอบคลุมและละเอียดกว่า'],
-        imageFolder: 'm3/topic4-prompt-chatgpt-portfolio',
         canvaEmbedUrl: CANVA_DECK_URL.m3,
         instructorId: 'm3-topic4',
       },
@@ -258,10 +228,6 @@ export const topics: Topic[] = [
         ],
         workshop:
           'ร่าง Prompt ใน ChatGPT → เลือก Portfolio Template ใน Canva ที่ตรงบุคลิก → จัดเลย์เอาต์คุมสีไม่เกิน 3 สี → Export เป็นไฟล์ PDF',
-        tips: [
-          'พอร์ตที่ดีต้องมี 4 ปัจจัย — อ่านง่าย (Readability), เป็นระเบียบ (Organized Grid), สะท้อนตัวตน (Personal Brand), ไม่ใช้สีเลอะเทอะเกิน 3 สี',
-        ],
-        imageFolder: 'm6/topic4-prompt-chatgpt-portfolio',
         canvaEmbedUrl: CANVA_DECK_URL.m6,
         instructorId: 'm6-topic4',
       },

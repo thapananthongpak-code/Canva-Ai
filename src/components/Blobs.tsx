@@ -5,9 +5,9 @@
 type BlobTone = 'grape' | 'aqua' | 'mint'
 
 const toneClass: Record<BlobTone, string> = {
-  grape: 'bg-grape-300/45',
-  aqua: 'bg-aqua-300/40',
-  mint: 'bg-mint-300/40',
+  grape: 'bg-grape-300/60',
+  aqua: 'bg-aqua-300/55',
+  mint: 'bg-mint-300/55',
 }
 
 export interface BlobSpec {
@@ -31,7 +31,7 @@ export function Blobs({ blobs }: { blobs: BlobSpec[] }) {
       {blobs.map((blob, index) => (
         <div
           key={index}
-          className={`absolute blur-[42px] ${toneClass[blob.tone]} ${blob.position}`}
+          className={`absolute blur-[38px] ${toneClass[blob.tone]} ${blob.position}`}
           style={{ borderRadius: blob.shape ?? shapes[index % shapes.length] }}
         />
       ))}

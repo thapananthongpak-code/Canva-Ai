@@ -69,7 +69,7 @@ export function HomePage() {
             variants={heroItem}
             className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-ink-500 sm:text-lg"
           >
-            รวมสรุป 4 หัวข้อที่เรียนไป พร้อมตัวอย่าง เคล็ดลับจากพี่ผู้สอน และสไลด์ Canva
+            รวมประเด็นสำคัญ กิจกรรมในคาบ และสไลด์ Canva ของทั้ง 4 หัวข้อที่เรียนไป
             ให้กลับมาอ่านทบทวนเมื่อไหร่ก็ได้ — ทุกหัวข้อมีทั้งเวอร์ชัน{' '}
             <span className="font-semibold text-grape-600">ม.3</span> และ{' '}
             <span className="font-semibold text-aqua-600">ม.6</span> เพราะเนื้อหาที่เรียนคนละชุดกัน
@@ -98,7 +98,13 @@ export function HomePage() {
 
       {/* ══════════════ หัวข้อที่ปักหมุดไว้ ══════════════ */}
       {pinned.length > 0 && (
-        <section className="container-page pt-14">
+        <section className="relative overflow-hidden pt-14">
+          <Blobs
+            blobs={[
+              { tone: 'mint', position: 'top-0 right-[-3rem] h-48 w-48 sm:h-60 sm:w-60' },
+            ]}
+          />
+          <div className="container-page">
           <Reveal className="rounded-3xl border border-mint-200 bg-mint-100/40 p-6 sm:p-8">
             <h2 className="flex items-center gap-2 text-lg font-bold text-ink-800">
               <BookmarkIcon className="h-5 w-5 text-mint-600" filled />
@@ -124,6 +130,7 @@ export function HomePage() {
               ))}
             </ul>
           </Reveal>
+          </div>
         </section>
       )}
 
@@ -171,7 +178,7 @@ export function HomePage() {
                 หัวข้อชื่อเดียวกัน แต่เนื้อหาที่เรียนจริงคนละชุด
               </h2>
               <p className="mt-5 text-base leading-relaxed text-ink-500">
-                ทีม ม.3 และทีม ม.6 สอนคนละประเด็น ใช้ตัวอย่างคนละแบบ และมีสไลด์คนละชุด
+                ทีม ม.3 และทีม ม.6 สอนคนละประเด็น ทำกิจกรรมคนละแบบ และมีสไลด์คนละชุด
                 เว็บนี้จึงเก็บทั้งสองเวอร์ชันไว้ครบ ไม่ต้องกลัวอ่านผิดชุด
                 กดปุ่มสลับระดับชั้นที่ด้านบนของหน้าเนื้อหาได้ตลอดเวลา
               </p>

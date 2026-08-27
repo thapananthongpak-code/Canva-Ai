@@ -50,7 +50,7 @@ export function TopicCard({
       <p className="relative mt-3 flex-1 text-sm leading-relaxed text-ink-500">{content.summary}</p>
 
       <span className="relative mt-6 flex items-center gap-2 text-sm font-semibold text-grape-600">
-        อ่านสรุปเวอร์ชัน {GRADE_LABEL[grade]}
+        อ่านเนื้อหาเวอร์ชัน {GRADE_LABEL[grade]}
         <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
       </span>
     </Link>

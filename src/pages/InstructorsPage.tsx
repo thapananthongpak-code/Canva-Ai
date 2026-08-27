@@ -26,7 +26,7 @@ export function InstructorsPage() {
 
   return (
     <>
-      {/* ══════════════ หัวหน้า ══════════════ */}
+      {/* ══════════════ ส่วนหัวของหน้า ══════════════ */}
       <section className="relative overflow-hidden pt-8">
         <Blobs
           blobs={[
@@ -35,7 +35,7 @@ export function InstructorsPage() {
           ]}
         />
         <div className="container-page">
-          <nav aria-label="เส้นทางหน้า">
+          <nav aria-label="เส้นทางการนำทาง">
             <ol className="flex flex-wrap items-center gap-1.5 text-sm text-ink-400">
               <li>
                 <Link to="/" className="focus-ring rounded transition-colors hover:text-grape-600">
@@ -66,7 +66,7 @@ export function InstructorsPage() {
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-500">
               พี่ผู้สอนทั้ง {team.length} คนของทีม {GRADE_LABEL[grade]} แบ่งกันรับผิดชอบคนละ 1 หัวข้อ
-              จากทั้งหมด {topics.length} หัวข้อ ติดต่อพี่ ๆ ได้ตามช่องทางในการ์ดถ้ามีอะไรอยากถามเพิ่ม
+              จากทั้งหมด {topics.length} หัวข้อ กดที่ป้ายหัวข้อในการ์ดเพื่อไปอ่านเนื้อหาของหัวข้อนั้นได้เลย
             </p>
 
             {/* ลิงก์ไปดูอีกทีม (คนละหน้ากัน ไม่ใช่ตัวสลับในหน้าเดียว) */}
@@ -82,7 +82,15 @@ export function InstructorsPage() {
       </section>
 
       {/* ══════════════ การ์ดพี่ผู้สอน 4 คน ══════════════ */}
-      <section className="container-page mt-14">
+      <section className="relative overflow-hidden pt-14">
+        <Blobs
+          blobs={[
+            { tone: 'mint', position: 'top-[8%] left-[-3rem] h-52 w-52 sm:h-64 sm:w-64' },
+            { tone: 'grape', position: 'top-[4%] right-[-3rem] h-56 w-56 sm:h-72 sm:w-72' },
+            { tone: 'aqua', position: 'bottom-[-2rem] left-[28%] h-48 w-48 sm:h-60 sm:w-60' },
+          ]}
+        />
+        <div className="container-page">
         <RevealGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((instructor) => (
             <RevealItem key={instructor.id} className="h-full">
@@ -90,10 +98,18 @@ export function InstructorsPage() {
             </RevealItem>
           ))}
         </RevealGroup>
+        </div>
       </section>
 
       {/* ══════════════ ลิงก์ไปเนื้อหาของทีมนี้ ══════════════ */}
-      <section className="container-page mt-20">
+      <section className="relative overflow-hidden pt-20">
+        <Blobs
+          blobs={[
+            { tone: 'aqua', position: 'top-[20%] right-[-3rem] h-48 w-48 sm:h-60 sm:w-60' },
+            { tone: 'grape', position: 'bottom-[-4rem] left-[10%] h-44 w-44 sm:h-56 sm:w-56' },
+          ]}
+        />
+        <div className="container-page">
         <Reveal className="rounded-3xl border border-grape-100 bg-white/70 p-6 shadow-soft sm:p-8">
           <h2 className="text-xl font-bold text-ink-800">
             เนื้อหาทั้ง {topics.length} หัวข้อของทีม {GRADE_LABEL[grade]}
@@ -117,6 +133,7 @@ export function InstructorsPage() {
             ))}
           </ul>
         </Reveal>
+        </div>
       </section>
     </>
   )

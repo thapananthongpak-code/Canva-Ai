@@ -2,13 +2,20 @@ import { Link } from 'react-router-dom'
 import { GRADES, GRADE_LABEL, topics } from '../data/topics'
 import { PADLET_URL } from '../data/links'
 import { ExternalLinkIcon, SparkIcon } from './Icons'
+import { Blobs } from './Blobs'
 
 const linkClass =
   'focus-ring rounded text-sm text-ink-500 transition-colors duration-200 hover:text-grape-600'
 
 export function Footer() {
   return (
-    <footer className="relative mt-24 border-t border-grape-100 bg-white/70">
+    <footer className="relative mt-24 overflow-hidden border-t border-grape-100 bg-white/70">
+      <Blobs
+        blobs={[
+          { tone: 'grape', position: 'top-[-3rem] left-[6%] h-44 w-44 sm:h-56 sm:w-56' },
+          { tone: 'aqua', position: 'bottom-4 right-[-3rem] h-40 w-40 sm:h-52 sm:w-52' },
+        ]}
+      />
       <div className="container-page grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         {/* แนะนำเว็บ */}
         <div className="sm:col-span-2 lg:col-span-1">
@@ -23,7 +30,7 @@ export function Footer() {
           </Link>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-500">
             คลังสรุปเนื้อหาหลังการอบรมสำหรับนักเรียน ม.3 และ ม.6 ที่เรียนคอร์สนี้ไปแล้ว
-            กลับมาอ่านทบทวนเนื้อหา ตัวอย่าง และเคล็ดลับได้ทุกเมื่อ
+            กลับมาอ่านทบทวนประเด็นสำคัญ กิจกรรมในคาบ และสไลด์ที่ใช้สอนได้ทุกเมื่อ
           </p>
         </div>
 
@@ -75,7 +82,7 @@ export function Footer() {
 
         {/* Padlet */}
         <div>
-          <h2 className="mb-4 text-sm font-bold text-ink-700">Prompt Template (Padlet)</h2>
+          <h2 className="mb-4 text-sm font-bold text-ink-700">Padlet</h2>
           <ul className="space-y-2.5">
             {GRADES.map((grade) => (
               <li key={grade}>

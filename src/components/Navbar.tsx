@@ -58,7 +58,7 @@ function NavDropdown({
   isActive: boolean
   openMenu: string | null
   setOpenMenu: (id: string | null) => void
-  /** ปุ่มแบบพื้นหลังทึบ (ใช้กับปุ่ม Prompt Template) */
+  /** ปุ่มแบบพื้นหลังทึบ (ใช้กับปุ่ม Padlet และ Canva) */
   solid?: boolean
 }) {
   const open = openMenu === id
@@ -400,7 +400,7 @@ export function Navbar() {
           <SearchBox variant="compact" />
           <NavDropdown
             id="padlet"
-            label="Prompt Template"
+            label="Padlet"
             tone="grape"
             isActive={false}
             items={padletItems}
@@ -492,7 +492,7 @@ export function Navbar() {
 
             <MobileAccordion
               id="padlet"
-              label="Prompt Template"
+              label="Padlet"
               tone="grape"
               items={padletItems}
               openSection={openSection}
