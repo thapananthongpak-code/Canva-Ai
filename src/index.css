@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    /* ระยะเผื่อ navbar sticky กำหนดที่ scroll-mt ของแต่ละ section แทน
+       ถ้าใส่ scroll-padding-top ตรงนี้ด้วยจะบวกกันสองเด้งแล้วกระโดดเลยหัวข้อไป */
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-ink-700 font-sans antialiased;
+  }
+
+  ::selection {
+    @apply bg-grape-200 text-ink-800;
+  }
+
+  /* ปิด animation ทั้งหมดให้ผู้ใช้ที่ตั้งค่าลดการเคลื่อนไหว */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  /* หัวข้อไล่สีธีม */
+  .text-gradient {
+    @apply bg-gradient-to-r from-grape-600 via-grape-500 to-aqua-500 bg-clip-text text-transparent;
+  }
+
+  .card-surface {
+    @apply rounded-3xl border border-grape-100 bg-paper shadow-soft;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-grape-400 focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
+  }
+}
