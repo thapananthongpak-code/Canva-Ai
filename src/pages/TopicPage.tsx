@@ -55,11 +55,13 @@ export function TopicPage() {
   return (
     <>
       {/* ══════════════ ส่วนหัวของหน้า ══════════════ */}
-      <section className="relative overflow-hidden pb-4 pt-8">
+      <section className="relative isolate overflow-hidden pb-4 pt-8">
         <Blobs
           blobs={[
             { tone: 'grape', position: '-top-24 left-[-4rem] h-72 w-72' },
             { tone: 'aqua', position: 'top-4 right-[-6rem] h-80 w-80' },
+            { tone: 'mint', kind: 'bubble', position: 'top-[18%] right-[12%] h-12 w-12 sm:h-20 sm:w-20' },
+            { tone: 'grape', kind: 'ring', position: 'bottom-[10%] right-[28%] h-10 w-10 sm:h-14 sm:w-14' },
           ]}
         />
         <div className="container-page">
@@ -127,13 +129,18 @@ export function TopicPage() {
       </section>
 
       {/* ══════════════ เนื้อหา + สารบัญลอย ══════════════ */}
-      <div className="relative overflow-hidden pb-4 pt-14">
+      <div className="relative isolate overflow-hidden pb-4 pt-14">
         <Blobs
           blobs={[
             { tone: 'mint', position: 'top-[4%] right-[-3rem] h-52 w-52 sm:h-64 sm:w-64' },
             { tone: 'grape', position: 'top-[30%] left-[-2rem] h-56 w-56 sm:h-72 sm:w-72' },
             { tone: 'aqua', position: 'top-[58%] right-[-2rem] h-48 w-48 sm:h-64 sm:w-64' },
             { tone: 'grape', position: 'bottom-[4%] left-[4%] h-48 w-48 sm:h-60 sm:w-60' },
+            { tone: 'aqua', kind: 'bubble', position: 'top-[16%] left-[3%] h-12 w-12 sm:h-16 sm:w-16' },
+            { tone: 'mint', kind: 'ring', position: 'top-[44%] left-[7%] h-14 w-14 sm:h-20 sm:w-20' },
+            { tone: 'grape', kind: 'bubble', position: 'top-[70%] left-[2%] h-9 w-9 sm:h-12 sm:w-12' },
+            { tone: 'mint', kind: 'bubble', position: 'bottom-[14%] right-[6%] h-10 w-10 sm:h-14 sm:w-14' },
+            { tone: 'aqua', kind: 'ring', position: 'bottom-[30%] left-[24%] h-8 w-8 sm:h-12 sm:w-12' },
           ]}
         />
         <div className="container-page grid gap-10 lg:grid-cols-[210px_minmax(0,1fr)] lg:gap-12">
@@ -199,9 +206,9 @@ export function TopicPage() {
               </p>
             </Reveal>
 
-            <RevealGroup className="mt-7 space-y-3" stagger={0.06}>
+            <RevealGroup className="mt-7 space-y-3">
               {content.content.map((point, pointIndex) => (
-                <RevealItem key={pointIndex}>
+                <RevealItem key={pointIndex} index={pointIndex} stagger={0.06}>
                   <div className="group flex items-start gap-4 rounded-2xl border border-grape-100 bg-white p-4 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:border-grape-300 hover:shadow-lift sm:p-5">
                     <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-grape-100 text-grape-700 transition-colors duration-300 group-hover:bg-grape-500 group-hover:text-white">
                       <CheckIcon className="h-4 w-4" />

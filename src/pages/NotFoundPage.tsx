@@ -4,11 +4,13 @@ import { ArrowRightIcon } from '../components/Icons'
 
 export function NotFoundPage() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative isolate overflow-hidden">
       <Blobs
         blobs={[
           { tone: 'grape', position: '-top-16 left-[10%] h-64 w-64' },
           { tone: 'mint', position: 'bottom-0 right-[8%] h-56 w-56' },
+          { tone: 'aqua', kind: 'bubble', position: 'top-[24%] right-[16%] h-12 w-12 sm:h-16 sm:w-16' },
+          { tone: 'grape', kind: 'ring', position: 'bottom-[22%] left-[18%] h-10 w-10 sm:h-14 sm:w-14' },
         ]}
       />
       <div className="container-page flex min-h-[60vh] flex-col items-center justify-center py-20 text-center">

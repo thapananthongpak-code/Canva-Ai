@@ -27,11 +27,13 @@ export function InstructorsPage() {
   return (
     <>
       {/* ══════════════ ส่วนหัวของหน้า ══════════════ */}
-      <section className="relative overflow-hidden pt-8">
+      <section className="relative isolate overflow-hidden pt-8">
         <Blobs
           blobs={[
             { tone: isM3 ? 'grape' : 'aqua', position: '-top-24 right-[-4rem] h-80 w-80' },
             { tone: 'mint', position: 'top-40 left-[-5rem] h-64 w-64' },
+            { tone: 'grape', kind: 'bubble', position: 'top-[36%] right-[10%] h-14 w-14 sm:h-20 sm:w-20' },
+            { tone: 'aqua', kind: 'ring', position: 'top-[62%] right-[24%] h-10 w-10 sm:h-14 sm:w-14' },
           ]}
         />
         <div className="container-page">
@@ -82,18 +84,20 @@ export function InstructorsPage() {
       </section>
 
       {/* ══════════════ การ์ดพี่ผู้สอน 4 คน ══════════════ */}
-      <section className="relative overflow-hidden pt-14">
+      <section className="relative isolate overflow-hidden pt-14">
         <Blobs
           blobs={[
             { tone: 'mint', position: 'top-[8%] left-[-3rem] h-52 w-52 sm:h-64 sm:w-64' },
             { tone: 'grape', position: 'top-[4%] right-[-3rem] h-56 w-56 sm:h-72 sm:w-72' },
             { tone: 'aqua', position: 'bottom-[-2rem] left-[28%] h-48 w-48 sm:h-60 sm:w-60' },
+            { tone: 'grape', kind: 'bubble', position: 'top-[4%] left-[6%] h-10 w-10 sm:h-14 sm:w-14' },
+            { tone: 'mint', kind: 'ring', position: 'bottom-[6%] right-[8%] h-12 w-12 sm:h-16 sm:w-16' },
           ]}
         />
         <div className="container-page">
         <RevealGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {team.map((instructor) => (
-            <RevealItem key={instructor.id} className="h-full">
+          {team.map((instructor, cardIndex) => (
+            <RevealItem key={instructor.id} index={cardIndex} className="h-full">
               <InstructorCard instructor={instructor} />
             </RevealItem>
           ))}
@@ -102,11 +106,13 @@ export function InstructorsPage() {
       </section>
 
       {/* ══════════════ ลิงก์ไปเนื้อหาของทีมนี้ ══════════════ */}
-      <section className="relative overflow-hidden pt-20">
+      <section className="relative isolate overflow-hidden pt-20">
         <Blobs
           blobs={[
             { tone: 'aqua', position: 'top-[20%] right-[-3rem] h-48 w-48 sm:h-60 sm:w-60' },
             { tone: 'grape', position: 'bottom-[-4rem] left-[10%] h-44 w-44 sm:h-56 sm:w-56' },
+            { tone: 'mint', kind: 'bubble', position: 'top-[10%] left-[4%] h-12 w-12 sm:h-16 sm:w-16' },
+            { tone: 'aqua', kind: 'bubble', position: 'bottom-[18%] right-[14%] h-8 w-8 sm:h-12 sm:w-12' },
           ]}
         />
         <div className="container-page">

@@ -9,11 +9,13 @@ const linkClass =
 
 export function Footer() {
   return (
-    <footer className="relative mt-24 overflow-hidden border-t border-grape-100 bg-white/70">
+    <footer className="relative isolate mt-24 overflow-hidden border-t border-grape-100 bg-white/70">
       <Blobs
         blobs={[
           { tone: 'grape', position: 'top-[-3rem] left-[6%] h-44 w-44 sm:h-56 sm:w-56' },
           { tone: 'aqua', position: 'bottom-4 right-[-3rem] h-40 w-40 sm:h-52 sm:w-52' },
+          { tone: 'mint', kind: 'bubble', position: 'top-[26%] left-[2%] h-10 w-10 sm:h-14 sm:w-14' },
+          { tone: 'grape', kind: 'ring', position: 'bottom-[20%] right-[3%] h-8 w-8 sm:h-12 sm:w-12' },
         ]}
       />
       <div className="container-page grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
@@ -26,10 +28,10 @@ export function Footer() {
             >
               <SparkIcon className="h-4 w-4" />
             </span>
-            <span className="font-bold text-ink-800">สรุปคอร์ส Canva &amp; Prompt</span>
+            <span className="font-bold text-ink-800">เนื้อหาคอร์ส Canva &amp; Prompt</span>
           </Link>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-500">
-            คลังสรุปเนื้อหาหลังการอบรมสำหรับนักเรียน ม.3 และ ม.6 ที่เรียนคอร์สนี้ไปแล้ว
+            เนื้อหาประกอบการเรียนสำหรับนักเรียน ม.3 และ ม.6 ที่เรียนคอร์สนี้ไปแล้ว
             กลับมาอ่านทบทวนประเด็นสำคัญ กิจกรรมในคาบ และสไลด์ที่ใช้สอนได้ทุกเมื่อ
           </p>
         </div>

@@ -123,8 +123,15 @@ function NavDropdown({
       <button
         type="button"
         onClick={() => {
-          openedByClick.current = !open
-          setOpenMenu(open ? null : id)
+          // เมนูที่กางอยู่เพราะ hover แล้วผู้ใช้กดทับ ให้ "ปักหมุด" ไว้ ไม่ใช่ปิดทันที
+          // จะปิดก็ต่อเมื่อกดซ้ำบนเมนูที่เปิดค้างด้วยการคลิกอยู่แล้ว
+          if (open && openedByClick.current) {
+            openedByClick.current = false
+            setOpenMenu(null)
+            return
+          }
+          openedByClick.current = true
+          setOpenMenu(id)
         }}
         aria-expanded={open}
         aria-haspopup="true"
@@ -347,10 +354,10 @@ export function Navbar() {
                 scrolled ? 'text-sm' : 'text-base'
               }`}
             >
-              สรุปคอร์ส Canva &amp; Prompt
+              เนื้อหาคอร์ส Canva &amp; Prompt
             </span>
             <span className="hidden text-xs text-ink-400 sm:block">
-              คลังทบทวนของนักเรียน ม.3 &amp; ม.6
+              เนื้อหาประกอบการเรียน ม.3 &amp; ม.6
             </span>
           </span>
         </Link>
