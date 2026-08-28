@@ -7,7 +7,7 @@ import { Blobs } from '../components/Blobs'
 import { TopicCard } from '../components/TopicCard'
 import { TopicIcon } from '../components/TopicIcon'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
-import { ArrowRightIcon, BookmarkIcon, SparkIcon } from '../components/Icons'
+import { ArrowRightIcon, BookmarkIcon } from '../components/Icons'
 
 /**
  * จังหวะการโผล่ของ hero ตอนโหลดหน้า — เล่นครั้งเดียวแล้วนิ่ง
@@ -46,17 +46,9 @@ export function HomePage() {
         />
 
         <div className="container-page max-w-3xl text-center">
-          <span
-            style={heroStep(0)}
-            className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-grape-200 bg-white/80 px-4 py-1.5 text-xs font-semibold text-grape-600 shadow-soft"
-          >
-            <SparkIcon className="h-3.5 w-3.5" />
-            เนื้อหาประกอบการเรียน · ไม่ใช่หน้าประชาสัมพันธ์คอร์ส
-          </span>
-
           <h1
-            style={heroStep(1)}
-            className="animate-fade-up mt-6 text-3xl font-bold leading-tight text-ink-800 sm:text-5xl"
+            style={heroStep(0)}
+            className="animate-fade-up text-3xl font-bold leading-tight text-ink-800 sm:text-5xl"
           >
             เนื้อหาคอร์ส
             <br className="hidden sm:block" />{' '}
@@ -64,7 +56,7 @@ export function HomePage() {
           </h1>
 
           <p
-            style={heroStep(2)}
+            style={heroStep(1)}
             className="animate-fade-up mx-auto mt-6 max-w-2xl text-base leading-relaxed text-ink-500 sm:text-lg"
           >
             รวมประเด็นสำคัญ กิจกรรมในคาบ และสไลด์ Canva ของทั้ง 4 หัวข้อที่เรียนไป
@@ -73,7 +65,7 @@ export function HomePage() {
             <span className="font-semibold text-aqua-600">ม.6</span> เพราะเนื้อหาที่เรียนคนละชุดกัน
           </p>
 
-          <div style={heroStep(3)} className="animate-fade-up mt-9 flex flex-wrap justify-center gap-3">
+          <div style={heroStep(2)} className="animate-fade-up mt-9 flex flex-wrap justify-center gap-3">
             <a
               href="#topics"
               className="focus-ring group inline-flex items-center gap-2 rounded-full bg-grape-500 px-6 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-grape-600 hover:shadow-lift"
