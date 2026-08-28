@@ -4,12 +4,23 @@ import { GRADE_LABEL } from '../data/topics'
 import { TopicIcon } from './TopicIcon'
 import { ArrowRightIcon } from './Icons'
 
-const accents = [
-  { ring: 'hover:border-grape-300', chip: 'bg-grape-100 text-grape-700', glow: 'from-grape-100' },
-  { ring: 'hover:border-aqua-300', chip: 'bg-aqua-100 text-aqua-600', glow: 'from-aqua-100' },
-  { ring: 'hover:border-mint-300', chip: 'bg-mint-100 text-mint-600', glow: 'from-mint-100' },
-  { ring: 'hover:border-grape-300', chip: 'bg-grape-100 text-grape-700', glow: 'from-grape-100' },
-]
+/** สีของการ์ดบอกระดับชั้น — ม.3 ม่วง / ม.6 ฟ้า ให้ตรงกับที่ใช้ในหน้าอื่น */
+const accents: Record<Grade, { ring: string; chip: string; glow: string; cta: string; badge: string }> = {
+  m3: {
+    ring: 'hover:border-grape-300',
+    chip: 'bg-grape-100 text-grape-700',
+    glow: 'from-grape-100',
+    cta: 'text-grape-600',
+    badge: 'bg-grape-50 text-grape-600',
+  },
+  m6: {
+    ring: 'hover:border-aqua-300',
+    chip: 'bg-aqua-100 text-aqua-600',
+    glow: 'from-aqua-100',
+    cta: 'text-aqua-600',
+    badge: 'bg-aqua-100/70 text-aqua-600',
+  },
+}
 
 export function TopicCard({
   topic,
@@ -18,10 +29,10 @@ export function TopicCard({
 }: {
   topic: Topic
   index: number
-  /** ระดับชั้นที่การ์ดนี้ลิงก์ไป (ค่าเริ่มต้นคือ ม.3 แล้วสลับได้ในหน้าเนื้อหา) */
+  /** ระดับชั้นที่การ์ดนี้ลิงก์ไป */
   grade?: Grade
 }) {
-  const accent = accents[index % accents.length]
+  const accent = accents[grade]
   const content = topic.contentByGrade[grade]
 
   return (
@@ -39,8 +50,13 @@ export function TopicCard({
         <span className={`grid h-12 w-12 place-items-center rounded-2xl ${accent.chip}`}>
           <TopicIcon icon={topic.icon} className="h-6 w-6" />
         </span>
-        <span className="rounded-full border border-grape-100 px-2.5 py-1 text-xs font-semibold text-ink-400">
-          หัวข้อที่ {index + 1}
+        <span className="flex shrink-0 items-center gap-1.5">
+          <span className="rounded-full border border-grape-100 px-2.5 py-1 text-xs font-semibold text-ink-400">
+            หัวข้อที่ {index + 1}
+          </span>
+          <span className={`rounded-full px-2.5 py-1 text-xs font-bold ${accent.badge}`}>
+            {GRADE_LABEL[grade]}
+          </span>
         </span>
       </div>
 
@@ -49,7 +65,7 @@ export function TopicCard({
       </h3>
       <p className="relative mt-3 flex-1 text-sm leading-relaxed text-ink-500">{content.summary}</p>
 
-      <span className="relative mt-6 flex items-center gap-2 text-sm font-semibold text-grape-600">
+      <span className={`relative mt-6 flex items-center gap-2 text-sm font-semibold ${accent.cta}`}>
         อ่านเนื้อหาเวอร์ชัน {GRADE_LABEL[grade]}
         <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
       </span>

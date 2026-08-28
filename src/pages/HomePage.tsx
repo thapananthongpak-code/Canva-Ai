@@ -125,7 +125,7 @@ export function HomePage() {
         </section>
       )}
 
-      {/* ══════════════ การ์ด 4 หัวข้อ ══════════════ */}
+      {/* ══════════════ การ์ด 8 ใบ (4 หัวข้อ x 2 ระดับชั้น) ══════════════ */}
       <section id="topics" className="relative isolate scroll-mt-28 overflow-hidden pt-20">
         <Blobs
           blobs={[
@@ -137,19 +137,45 @@ export function HomePage() {
         />
         <div className="container-page">
           <Reveal>
-            <p className="text-sm font-semibold uppercase tracking-wider text-grape-500">4 หัวข้อที่เรียนไป</p>
+            <p className="text-sm font-semibold uppercase tracking-wider text-grape-500">
+              8 ชุดเนื้อหา · 4 หัวข้อ × 2 ระดับชั้น
+            </p>
             <h2 className="mt-3 max-w-2xl text-2xl font-bold leading-snug text-ink-800 sm:text-3xl">
-              เลือกหัวข้อที่อยากทบทวน แล้วสลับดูเวอร์ชัน ม.3 / ม.6 ได้ในหน้าเนื้อหา
+              เลือกหัวข้อและระดับชั้นที่อยากทบทวนได้เลย
             </h2>
           </Reveal>
 
-          <RevealGroup className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {topics.map((topic, index) => (
-              <RevealItem key={topic.id} index={index} className="h-full">
-                <TopicCard topic={topic} index={index} />
-              </RevealItem>
-            ))}
-          </RevealGroup>
+          {GRADES.map((grade) => {
+            const isM3 = grade === 'm3'
+            return (
+              <div key={grade} className="mt-12">
+                <Reveal className="flex items-center gap-3">
+                  <span
+                    className={`rounded-full px-4 py-1.5 text-sm font-bold ${
+                      isM3 ? 'bg-grape-100 text-grape-700' : 'bg-aqua-100 text-aqua-600'
+                    }`}
+                  >
+                    {GRADE_LABEL[grade]}
+                  </span>
+                  <h3 className="text-base font-bold text-ink-700 sm:text-lg">
+                    เนื้อหาของทีม {GRADE_LABEL[grade]}
+                  </h3>
+                  <span
+                    className={`h-px flex-1 ${isM3 ? 'bg-grape-100' : 'bg-aqua-200/70'}`}
+                    aria-hidden="true"
+                  />
+                </Reveal>
+
+                <RevealGroup className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                  {topics.map((topic, index) => (
+                    <RevealItem key={topic.id} index={index} className="h-full">
+                      <TopicCard topic={topic} index={index} grade={grade} />
+                    </RevealItem>
+                  ))}
+                </RevealGroup>
+              </div>
+            )
+          })}
         </div>
       </section>
 
