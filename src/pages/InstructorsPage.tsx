@@ -1,5 +1,5 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { GRADE_LABEL, isGrade, topics } from '../data/topics'
+import { GRADE_LABEL, getTopicsForGrade, isGrade, topics } from '../data/topics'
 import type { Grade } from '../data/topics'
 import { getInstructorsByGrade } from '../data/instructors'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
@@ -125,7 +125,7 @@ export function InstructorsPage() {
             เนื้อหาทั้ง {topics.length} หัวข้อของทีม {GRADE_LABEL[grade]}
           </h2>
           <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-            {topics.map((topic, index) => (
+            {getTopicsForGrade(grade).map((topic, index) => (
               <li key={topic.id}>
                 <Link
                   to={`/topic/${topic.slug}/${grade}`}

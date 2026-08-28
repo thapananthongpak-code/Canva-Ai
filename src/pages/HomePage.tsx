@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { GRADES, GRADE_LABEL, getTopicBySlug, topics } from '../data/topics'
+import { GRADES, GRADE_LABEL, getTopicBySlug, getTopicsForGrade } from '../data/topics'
 import { getInstructorsByGrade } from '../data/instructors'
 import { useFavorites, parseFavoriteKey } from '../hooks/useFavorites'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
@@ -167,7 +167,7 @@ export function HomePage() {
                 </Reveal>
 
                 <RevealGroup className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                  {topics.map((topic, index) => (
+                  {getTopicsForGrade(grade).map((topic, index) => (
                     <RevealItem key={topic.id} index={index} className="h-full">
                       <TopicCard topic={topic} index={index} grade={grade} />
                     </RevealItem>

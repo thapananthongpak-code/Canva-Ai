@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import type { Instructor } from '../data/instructors'
-import { topics } from '../data/topics'
+import { getTopicNumber, topics } from '../data/topics'
 
 export function InstructorCard({ instructor }: { instructor: Instructor }) {
   const topic = topics.find((item) => item.id === instructor.topicId)
-  const topicIndex = topics.findIndex((item) => item.id === instructor.topicId)
+  const topicNumber = topic ? getTopicNumber(topic, instructor.grade) : 0
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-grape-100 bg-paper shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-grape-300 hover:shadow-lift">
@@ -26,7 +26,7 @@ export function InstructorCard({ instructor }: { instructor: Instructor }) {
             to={`/topic/${topic.slug}/${instructor.grade}`}
             className="focus-ring mt-3 inline-flex w-fit max-w-full items-center gap-1.5 rounded-full bg-grape-50 px-3 py-1.5 text-xs font-semibold text-grape-700 transition-colors duration-200 hover:bg-grape-100"
           >
-            <span className="shrink-0 text-grape-400">หัวข้อที่ {topicIndex + 1}</span>
+            <span className="shrink-0 text-grape-400">หัวข้อที่ {topicNumber}</span>
             <span className="line-clamp-1">{topic.shortTitle}</span>
           </Link>
         )}

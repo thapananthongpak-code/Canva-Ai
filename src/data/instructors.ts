@@ -11,6 +11,7 @@
  */
 
 import type { Grade } from './topics'
+import { getTopicsForGrade } from './topics'
 
 import photoM3Topic1 from '../assets/instructors/m3-topic1.jpg'
 import photoM3Topic2 from '../assets/instructors/m3-topic2.jpg'
@@ -104,9 +105,15 @@ export const instructors: Instructor[] = [
   },
 ]
 
-/** พี่ผู้สอนทั้งหมดของทีมใดทีมหนึ่ง (เรียงตามลำดับหัวข้อ) */
+/**
+ * พี่ผู้สอนทั้งหมดของทีมใดทีมหนึ่ง
+ * เรียงตามลำดับกิจกรรมในสไลด์ของทีมนั้น (ม.3 กับ ม.6 เรียงไม่เหมือนกัน)
+ */
 export function getInstructorsByGrade(grade: Grade): Instructor[] {
-  return instructors.filter((instructor) => instructor.grade === grade)
+  const order = getTopicsForGrade(grade).map((topic) => topic.id)
+  return instructors
+    .filter((instructor) => instructor.grade === grade)
+    .sort((a, b) => order.indexOf(a.topicId) - order.indexOf(b.topicId))
 }
 
 /** พี่ผู้สอนคนเดียวจาก id ที่อ้างอิงใน topics.ts */

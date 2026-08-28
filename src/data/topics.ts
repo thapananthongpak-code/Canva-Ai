@@ -29,6 +29,13 @@ export interface TopicContent {
   content: string[]
   /** กิจกรรม/เวิร์กช็อปที่ทำในคาบ */
   workshop: string
+  /**
+   * ลำดับกิจกรรมตามสไลด์ของระดับชั้นนี้ (1–4)
+   * ม.3 กับ ม.6 เรียงกิจกรรมไม่เหมือนกัน เช่น Transition/Animation
+   * เป็นกิจกรรมที่ 2 ของ ม.6 แต่ ม.3 เรียนพื้นฐาน Canva เป็นกิจกรรมที่ 1
+   * เว็บจึงเรียงหัวข้อและนับเลขหัวข้อตามลำดับของระดับชั้นที่กำลังดูอยู่
+   */
+  slideOrder: number
   /** ลิงก์สไลด์ Canva ของเนื้อหาชุดนี้ */
   canvaEmbedUrl: string
   /** อ้างอิงไปยังพี่ผู้สอนใน instructors.ts */
@@ -85,7 +92,7 @@ export function getCanvaLinks(url: string): { embed: string; view: string } {
 export const topics: Topic[] = [
   // ═══════════════════════════════════════════════════════════════
   // หัวข้อที่ 1 — การเริ่มต้นสร้างสื่อนำเสนอด้วย Canva
-  //   ม.3 = Activity 1 (พื้นฐาน Canva)  |  ม.6 = กิจกรรมที่ 2 (Transition & Animation)
+  //   ม.3 = กิจกรรมที่ 1 (พื้นฐาน Canva)  |  ม.6 = กิจกรรมที่ 2 (Transition & Animation)
   // ═══════════════════════════════════════════════════════════════
   {
     id: 'topic1',
@@ -110,6 +117,7 @@ export const topics: Topic[] = [
         ],
         workshop:
           'สร้างพรีเซนเทชันแนะนำตัวเองด้วยเครื่องมือพื้นฐานที่เรียนไป',
+        slideOrder: 1,
         canvaEmbedUrl: CANVA_DECK_URL.m3,
         instructorId: 'm3-topic1',
       },
@@ -124,6 +132,7 @@ export const topics: Topic[] = [
         ],
         workshop:
           'ปรับสไลด์เดิมของตัวเอง แล้วใส่ Transition ระหว่างหน้าและ Animation ให้องค์ประกอบภายในหน้า จากนั้นส่งผลงานผ่าน Padlet',
+        slideOrder: 2,
         canvaEmbedUrl: CANVA_DECK_URL.m6,
         instructorId: 'm6-topic1',
       },
@@ -132,7 +141,7 @@ export const topics: Topic[] = [
 
   // ═══════════════════════════════════════════════════════════════
   // หัวข้อที่ 2 — การประยุกต์ใช้ AI ใน Canva
-  //   ม.3 = Activity 2 (AI 4 เครื่องมือ)  |  ม.6 = กิจกรรมที่ 1 (Canva for Education)
+  //   ม.3 = กิจกรรมที่ 2 (AI 4 เครื่องมือ)  |  ม.6 = กิจกรรมที่ 1 (Canva for Education)
   // ═══════════════════════════════════════════════════════════════
   {
     id: 'topic2',
@@ -153,6 +162,7 @@ export const topics: Topic[] = [
         ],
         workshop:
           'ทดลองใช้ AI พัฒนาสไลด์ของตัวเอง เช่น สร้างโครงสไลด์ “My Future” ฉบับปรับปรุง ปรับคำบรรยาย “อาชีพในฝัน” ให้น่าสนใจขึ้น หรือสรุปทักษะและเป้าหมายเป็น Infographic หน้าเดียว',
+        slideOrder: 2,
         canvaEmbedUrl: CANVA_DECK_URL.m3,
         instructorId: 'm3-topic2',
       },
@@ -168,6 +178,7 @@ export const topics: Topic[] = [
         ],
         workshop:
           'สร้าง Presentation ด้วย AI แล้วนำสิ่งที่เรียนไปปรับ Presentation ของตัวเองให้ดีขึ้น จากนั้นส่งผลงานผ่าน Padlet',
+        slideOrder: 1,
         canvaEmbedUrl: CANVA_DECK_URL.m6,
         instructorId: 'm6-topic2',
       },
@@ -198,6 +209,7 @@ export const topics: Topic[] = [
         ],
         workshop:
           'ฝึกเขียน Prompt ตามโครงสร้าง RTCK ให้ ChatGPT ช่วยแต่งเนื้อหาและวางโครงร่างสไลด์แนะนำตัวเอง 5 หน้า สำหรับพูดหน้าห้องให้เพื่อนและครูฟัง',
+        slideOrder: 3,
         canvaEmbedUrl: CANVA_DECK_URL.m3,
         instructorId: 'm3-topic3',
       },
@@ -213,6 +225,7 @@ export const topics: Topic[] = [
         ],
         workshop:
           'เขียน Prompt ครบสูตร RTCF ให้ ChatGPT ช่วยเขียน About Me ความยาวไม่เกิน 150 คำ สำหรับยื่นพอร์ตเข้าคณะที่ต้องการ',
+        slideOrder: 3,
         canvaEmbedUrl: CANVA_DECK_URL.m6,
         instructorId: 'm6-topic3',
       },
@@ -243,6 +256,7 @@ export const topics: Topic[] = [
         ],
         workshop:
           'เขียน Prompt ขอให้ ChatGPT ช่วยร่างจุดมุ่งหมาย (Statement of Purpose) สั้น ๆ 3 บรรทัด สำหรับใส่ใน Portfolio ม.3 ต่อ ม.4 ตามสายการเรียนที่จะสมัคร แล้วนำไปจัดหน้าใน Canva',
+        slideOrder: 4,
         canvaEmbedUrl: CANVA_DECK_URL.m3,
         instructorId: 'm3-topic4',
       },
@@ -258,6 +272,7 @@ export const topics: Topic[] = [
         ],
         workshop:
           'ร่าง Prompt ใน ChatGPT ให้ได้เนื้อหาอย่างน้อย 3 หมวด (About Me, Skills, Activities) → เลือก Portfolio Template ใน Canva ที่ตรงบุคลิก → จัดเลย์เอาต์คุมสีไม่เกิน 3 สี → Export เป็นไฟล์ PDF หรือคัดลอกลิงก์ส่งงาน',
+        slideOrder: 4,
         canvaEmbedUrl: CANVA_DECK_URL.m6,
         instructorId: 'm6-topic4',
       },
@@ -270,12 +285,25 @@ export function getTopicBySlug(slug: string | undefined): Topic | undefined {
   return topics.find((topic) => topic.slug === slug)
 }
 
-/** ลำดับหัวข้อ ใช้ทำปุ่มก่อนหน้า/ถัดไป */
-export function getTopicNeighbors(slug: string) {
-  const index = topics.findIndex((topic) => topic.slug === slug)
+/** หัวข้อทั้งหมดเรียงตามลำดับกิจกรรมในสไลด์ของระดับชั้นนั้น */
+export function getTopicsForGrade(grade: Grade): Topic[] {
+  return [...topics].sort(
+    (a, b) => a.contentByGrade[grade].slideOrder - b.contentByGrade[grade].slideOrder,
+  )
+}
+
+/** เลขหัวข้อ (1–4) ของระดับชั้นนั้น ใช้แสดงป้าย "หัวข้อที่ N" */
+export function getTopicNumber(topic: Topic, grade: Grade): number {
+  return topic.contentByGrade[grade].slideOrder
+}
+
+/** หัวข้อก่อนหน้า/ถัดไป ตามลำดับของระดับชั้นที่กำลังดูอยู่ */
+export function getTopicNeighbors(slug: string, grade: Grade) {
+  const ordered = getTopicsForGrade(grade)
+  const index = ordered.findIndex((topic) => topic.slug === slug)
   return {
-    prev: index > 0 ? topics[index - 1] : undefined,
-    next: index >= 0 && index < topics.length - 1 ? topics[index + 1] : undefined,
+    prev: index > 0 ? ordered[index - 1] : undefined,
+    next: index >= 0 && index < ordered.length - 1 ? ordered[index + 1] : undefined,
     index,
   }
 }

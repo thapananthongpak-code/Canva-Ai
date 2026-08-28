@@ -5,6 +5,7 @@ import {
   getCanvaLinks,
   getTopicBySlug,
   getTopicNeighbors,
+  getTopicNumber,
   isGrade,
   topics,
 } from '../data/topics'
@@ -52,7 +53,8 @@ export function TopicPage() {
   const grade = gradeParam
   const content = topic.contentByGrade[grade]
   const instructor = getInstructorById(content.instructorId)
-  const { prev, next, index } = getTopicNeighbors(topic.slug)
+  const { prev, next } = getTopicNeighbors(topic.slug, grade)
+  const topicNumber = getTopicNumber(topic, grade)
   const slides = getCanvaLinks(content.canvaEmbedUrl)
   const pinned = isFavorite(topic.slug, grade)
 
@@ -99,7 +101,7 @@ export function TopicPage() {
               <TopicIcon icon={topic.icon} className="h-6 w-6" />
             </span>
             <span className="rounded-full border border-grape-200 bg-white/70 px-3 py-1 text-xs font-semibold text-grape-600">
-              หัวข้อที่ {index + 1} จาก {topics.length}
+              หัวข้อที่ {topicNumber} จาก {topics.length}
             </span>
           </div>
 
