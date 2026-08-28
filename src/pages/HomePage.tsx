@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { GRADES, GRADE_LABEL, getTopicBySlug, topics } from '../data/topics'
 import { getInstructorsByGrade } from '../data/instructors'
 import { useFavorites, parseFavoriteKey } from '../hooks/useFavorites'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { Blobs } from '../components/Blobs'
 import { TopicCard } from '../components/TopicCard'
 import { TopicIcon } from '../components/TopicIcon'
@@ -16,6 +17,7 @@ import { ArrowRightIcon, BookmarkIcon, SparkIcon } from '../components/Icons'
 const heroStep = (step: number) => ({ animationDelay: `${0.05 + step * 0.09}s` })
 
 export function HomePage() {
+  useDocumentTitle()
   const { favorites } = useFavorites()
 
   const pinned = favorites

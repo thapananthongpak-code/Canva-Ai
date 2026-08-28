@@ -111,16 +111,6 @@ export function ListIcon({ className = base }: IconProps) {
   )
 }
 
-export function ImageIcon({ className = base }: IconProps) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="3" y="4" width="18" height="16" rx="3" />
-      <circle cx="8.5" cy="9.5" r="1.6" />
-      <path d="m4 17 4.5-4.5a2 2 0 0 1 2.8 0L15 16m0 0 2-2a2 2 0 0 1 2.8 0L21 15.2" />
-    </svg>
-  )
-}
-
 export function WorkshopIcon({ className = base }: IconProps) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

@@ -11,6 +11,7 @@ import {
 import { getInstructorById } from '../data/instructors'
 import { useFavorites } from '../hooks/useFavorites'
 import { useActiveSection } from '../hooks/useActiveSection'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { Blobs } from '../components/Blobs'
 import { GradeSwitch } from '../components/GradeSwitch'
 import { TopicIcon } from '../components/TopicIcon'
@@ -39,6 +40,9 @@ export function TopicPage() {
   const sectionIds = useMemo(() => sections.map((section) => section.id), [])
   const activeSection = useActiveSection(sectionIds)
   const { isFavorite, toggle } = useFavorites()
+  useDocumentTitle(
+    topic && isGrade(gradeParam) ? `${topic.title} · ${GRADE_LABEL[gradeParam]}` : undefined,
+  )
 
   // slug ไม่มีอยู่จริง → หน้า 404
   if (!topic) return <NotFoundPage />

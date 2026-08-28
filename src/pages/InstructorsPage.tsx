@@ -2,6 +2,7 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import { GRADE_LABEL, isGrade, topics } from '../data/topics'
 import type { Grade } from '../data/topics'
 import { getInstructorsByGrade } from '../data/instructors'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { Blobs } from '../components/Blobs'
 import { InstructorCard } from '../components/InstructorCard'
 import { Reveal, RevealGroup, RevealItem } from '../components/Reveal'
@@ -15,6 +16,9 @@ const otherGrade = (grade: Grade): Grade => (grade === 'm3' ? 'm6' : 'm3')
  */
 export function InstructorsPage() {
   const { grade: gradeParam } = useParams()
+  useDocumentTitle(
+    isGrade(gradeParam) ? `ทีมพี่ผู้สอน ${GRADE_LABEL[gradeParam]}` : undefined,
+  )
 
   // grade ผิด → ส่งกลับไปที่ ม.3 เป็นค่าเริ่มต้น
   if (!isGrade(gradeParam)) return <Navigate to="/instructors/m3" replace />

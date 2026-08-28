@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { Blobs } from '../components/Blobs'
 import { ArrowRightIcon } from '../components/Icons'
 
 export function NotFoundPage() {
+  useDocumentTitle('ไม่พบหน้านี้')
+
   return (
     <section className="relative isolate overflow-hidden">
       <Blobs

@@ -18,17 +18,17 @@ export function GradeSwitch({
   return (
     <div className="inline-flex flex-wrap items-center gap-3">
       <span className="text-sm font-medium text-ink-400">{label}</span>
-      <div
+      {/* เป็นลิงก์เปลี่ยนหน้าจริง ๆ ไม่ใช่แท็บสลับเนื้อหาในหน้าเดียว
+          จึงใช้ nav + aria-current แทน role="tablist" ที่ต้องมี tabpanel คู่กัน */}
+      <nav
         className="inline-flex rounded-full border border-grape-200 bg-white/80 p-1 shadow-soft"
-        role="tablist"
         aria-label="เลือกระดับชั้น"
       >
         {GRADES.map((grade) => (
           <NavLink
             key={grade}
             to={buildPath(grade)}
-            role="tab"
-            aria-selected={grade === current}
+            aria-current={grade === current ? 'page' : undefined}
             replace
             className={`focus-ring rounded-full px-5 py-1.5 text-sm transition-all duration-200 ${
               grade === current
@@ -39,7 +39,7 @@ export function GradeSwitch({
             {GRADE_LABEL[grade]}
           </NavLink>
         ))}
-      </div>
+      </nav>
     </div>
   )
 }
