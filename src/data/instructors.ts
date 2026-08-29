@@ -89,7 +89,7 @@ export const instructors: Instructor[] = [
   },
   {
     id: 'm6-topic3',
-    name: 'พี่บี้',
+    name: 'พี่ไอวี่',
     grade: 'm6',
     topicId: 'topic3',
     photoUrl: photoM6Topic3,
