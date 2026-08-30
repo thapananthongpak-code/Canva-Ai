@@ -73,7 +73,7 @@ export const instructors: Instructor[] = [
   // ═══════════════════════════════════════════════════════════════
   {
     id: 'm6-topic1',
-    name: 'พี่ปลื้ม',
+    name: 'พี่ไมเคิล',
     grade: 'm6',
     topicId: 'topic1',
     photoUrl: photoM6Topic1,
