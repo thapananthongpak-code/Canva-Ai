@@ -24,7 +24,10 @@ import photoM6Topic4 from '../assets/instructors/m6-topic4.jpg'
 
 export interface Instructor {
   id: string
+  /** ชื่อเล่น (มีคำว่า "พี่" นำหน้า) */
   name: string
+  /** ชื่อจริง-นามสกุล พร้อมคำนำหน้า */
+  fullName: string
   grade: Grade
   topicId: string
   photoUrl: string
@@ -38,6 +41,7 @@ export const instructors: Instructor[] = [
   {
     id: 'm3-topic1',
     name: 'พี่ไตเติ้ล',
+    fullName: 'นายฐปนรรฆ์ ธงภักดิ์',
     grade: 'm3',
     topicId: 'topic1',
     photoUrl: photoM3Topic1,
@@ -46,6 +50,7 @@ export const instructors: Instructor[] = [
   {
     id: 'm3-topic2',
     name: 'พี่อาร์ท',
+    fullName: 'นายณัฐดนัย โพธิ์ทอง',
     grade: 'm3',
     topicId: 'topic2',
     photoUrl: photoM3Topic2,
@@ -54,6 +59,7 @@ export const instructors: Instructor[] = [
   {
     id: 'm3-topic3',
     name: 'พี่อีฟ',
+    fullName: 'นางสาวณัฐวรา วิเศษทรัพย์',
     grade: 'm3',
     topicId: 'topic3',
     photoUrl: photoM3Topic3,
@@ -62,6 +68,7 @@ export const instructors: Instructor[] = [
   {
     id: 'm3-topic4',
     name: 'พี่โฟม',
+    fullName: 'นางสาวนพวรรณ กลิ่นนิรันดร์',
     grade: 'm3',
     topicId: 'topic4',
     photoUrl: photoM3Topic4,
@@ -74,6 +81,7 @@ export const instructors: Instructor[] = [
   {
     id: 'm6-topic1',
     name: 'พี่ไมเคิล',
+    fullName: 'นายปกป้อง พินพันธุ์',
     grade: 'm6',
     topicId: 'topic1',
     photoUrl: photoM6Topic1,
@@ -82,6 +90,7 @@ export const instructors: Instructor[] = [
   {
     id: 'm6-topic2',
     name: 'พี่กาก้า',
+    fullName: 'นายสิตรินทร์ ผาเลิศ',
     grade: 'm6',
     topicId: 'topic2',
     photoUrl: photoM6Topic2,
@@ -90,6 +99,7 @@ export const instructors: Instructor[] = [
   {
     id: 'm6-topic3',
     name: 'พี่ไอวี่',
+    fullName: 'นายณัฐดนัย เหล่าเรือง',
     grade: 'm6',
     topicId: 'topic3',
     photoUrl: photoM6Topic3,
@@ -98,6 +108,7 @@ export const instructors: Instructor[] = [
   {
     id: 'm6-topic4',
     name: 'พี่อิง',
+    fullName: 'นายอิงชิตะ บุญอาจ',
     grade: 'm6',
     topicId: 'topic4',
     photoUrl: photoM6Topic4,

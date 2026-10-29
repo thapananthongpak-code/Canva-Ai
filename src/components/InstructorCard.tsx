@@ -20,6 +20,7 @@ export function InstructorCard({ instructor }: { instructor: Instructor }) {
 
       <div className="flex flex-1 flex-col p-6">
         <h3 className="text-lg font-bold leading-snug text-ink-800">{instructor.name}</h3>
+        <p className="mt-0.5 text-sm text-ink-500">{instructor.fullName}</p>
 
         {topic && (
           <Link
